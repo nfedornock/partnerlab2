@@ -10,7 +10,14 @@ let questionArray = []
 const API_TOKEN = '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'
 
 function getAIResponse(){
-    //question = document.querySelector("#questionField").innerHTML
+
+
+    // AI IS SLOW TO RESPOND PLEASE WAIT FOR THE PAGE TO SHOW THE AI's REPONSE
+    // AI IS SLOW TO RESPOND PLEASE WAIT FOR THE PAGE TO SHOW THE AI's REPONSE
+    // AI IS SLOW TO RESPOND PLEASE WAIT FOR THE PAGE TO SHOW THE AI's REPONSE
+    // AI IS SLOW TO RESPOND PLEASE WAIT FOR THE PAGE TO SHOW THE AI's REPONSE
+
+
     question = questionData[randomQuestionNumber].question
 
     let request = new XMLHttpRequest();
@@ -52,6 +59,8 @@ function getAIResponse(){
 }
 
 function submitAnswer(){
+    document.getElementById(`submit`).style.display = "none"
+
     userAnswer = document.querySelector("#responseBox").value
     console.log(userAnswer)
     if(questionData[randomQuestionNumber].answer.toLowerCase() === userAnswer.toLowerCase()){
@@ -65,9 +74,13 @@ function submitAnswer(){
     getAIResponse()
 }
 
-function createQuestion(catNum, valueNum){
+function createQuestion(catNum, valueNum, buttonValue){
     let categoryName = document.querySelector(`#finalCat${catNum}`).innerHTML
     let categoryID = 56
+
+    document.getElementById(`${buttonValue}`).style.display = "none"
+
+    document.getElementById(`submit`).style.display = "block"
 
     categoryList.forEach(category => {
         if(categoryName == (categoryList.title)){
@@ -95,49 +108,6 @@ function createQuestion(catNum, valueNum){
         console.log(questionData[randomQuestionNumber].question)
     }
     request.send();
-
-    // categoryList.forEach((category,index) => {
-    //     let request = new XMLHttpRequest();
-    //     request.open("GET", `https://jservice.io/api/category?id=${category.id}`, false); 
-    //     request.send()
-    //     let data = JSON.parse(request.response);
-
-    //     // if a bad response, just return before running anymore code
-    //     if (request.status < 200 && request.status >= 400) {
-    //         console.log(`Error ${request.status}: ${request.statusText}`)
-    //         return "Error"
-    //     }
-
-    //     // block of code to separate all questions by value
-    //     let seperatedQuestionArray = [[],[],[],[],[]]
-    //     data.clues.forEach((clue) => {
-    //         if(valueArray.includes(clue.value)){
-    //             seperatedQuestionArray[valueArray.indexOf(clue.value)].push(clue)
-    //         }
-    //     })
-
-    //     // block of code to randomly select 1 question for each value, if there are no questions for that value, it will make it "No Question"
-    //     let randomQuestionsForCategory = []
-    //     let counter = 0
-    //     while (randomQuestionsForCategory.length < 5) {
-    //         if (seperatedQuestionArray[counter].length === 0){
-    //             randomQuestionsForCategory.push("No Question")
-    //         } else {
-    //             let randomNum = Math.floor(Math.random() * seperatedQuestionArray[counter].length)
-    //             if (!randomQuestionsForCategory.includes(randomNum)) {
-    //                 randomQuestionsForCategory.push(seperatedQuestionArray[counter][randomNum])
-    //                 counter++
-    //             }
-    //         }
-    //     }
-
-    //     // block of code to set each random question to the main game board in the correct position
-    //     questionArray.forEach((categoryArrayOfQuestions, index) => {
-    //         categoryArrayOfQuestions.push(randomQuestionsForCategory[index])
-
-    //     })
-
-    // })
 }
 
 function setUpCategories(){
