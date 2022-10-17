@@ -10,7 +10,8 @@ let questionArray = []
 const API_TOKEN = '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'
 
 function getAIResponse(){
-    question = document.querySelector("#questionField").innerHTML
+    //question = document.querySelector("#questionField").innerHTML
+    question = questionData[randomQuestionNumber].question
 
     let request = new XMLHttpRequest();
     request.open("POST",  "https://api-inference.huggingface.co/models/bigscience/bloom", true)
