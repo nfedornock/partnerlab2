@@ -43,6 +43,7 @@ function getAIResponse(){
         if (questionData[randomQuestionNumber].answer.toLowerCase() === AIAnswer.toLowerCase()){
             let text = document.querySelector("#responseField").innerHTML
             document.querySelector("#responseField").innerHTML = `${text} and the AI got it Correct`
+            document.querySelector("#aiPoints").innerHTML = parseInt(questionData[randomQuestionNumber].value) + parseInt(document.querySelector("#aiPoints").innerHTML)
         } else {
             let text = document.querySelector("#responseField").innerHTML
             document.querySelector("#responseField").innerHTML = `${text} and the AI got it Incorrect`
@@ -55,6 +56,7 @@ function submitAnswer(){
     console.log(userAnswer)
     if(questionData[randomQuestionNumber].answer.toLowerCase() === userAnswer.toLowerCase()){
         document.querySelector("#responseField").innerHTML = "You got it correct"
+        document.querySelector("#playerPoints").innerHTML = parseInt(questionData[randomQuestionNumber].value) + parseInt(document.querySelector("#playerPoints").innerHTML)
     }
     else{
         document.querySelector("#responseField").innerHTML = "You got it incorrect"
