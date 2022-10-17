@@ -8,6 +8,17 @@ let randomQuestionNumber
 const valueArray = [100,200,300,400,500]
 let questionArray = []
 const API_TOKEN = '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'
+let isDarkMode = true
+
+function onDropdownChange(){
+    let dropdown = document.querySelector("#themeSelect").selectedIndex
+    if (dropdown === 0){
+        document.querySelector("#styleSheet").href = "darkMode.css"
+    }
+    else{
+        document.querySelector("#styleSheet").href = "lightMode.css"
+    }
+}
 
 function getAIResponse(){
 
@@ -49,11 +60,11 @@ function getAIResponse(){
         console.log(`the real Answer is ${questionData[randomQuestionNumber].answer}`)
         if (questionData[randomQuestionNumber].answer.toLowerCase() === AIAnswer.toLowerCase()){
             let text = document.querySelector("#responseField").innerHTML
-            document.querySelector("#responseField").innerHTML = `${text} and the AI got it Correct`
+            document.querySelector("#responseField").innerHTML = `${text} and the AI got it correct`
             document.querySelector("#aiPoints").innerHTML = parseInt(questionData[randomQuestionNumber].value) + parseInt(document.querySelector("#aiPoints").innerHTML)
         } else {
             let text = document.querySelector("#responseField").innerHTML
-            document.querySelector("#responseField").innerHTML = `${text} and the AI got it Incorrect`
+            document.querySelector("#responseField").innerHTML = `${text} and the AI got it incorrect`
         }
     }
 }

@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link id="styleSheet" rel="stylesheet" href="darkMode.css">
         <title>Document</title>
     </head>
-    <body>
+    <body class = "customBody"
         <div>
             <table id="catSelector" class="visibleCatSelector">
                 <tr>
@@ -73,21 +74,35 @@
             </table>
         </div>
 
-        <br><br>
-        <p id="questionField"></p><br><br>
-        <input type="text" id="responseBox"></input><br>
+        <div>
+            <br><br>
+            <label id="questionHeader" class="questionVisibleText">Question: </label>
+            <p id="questionField" class="answerVisibleText"></p><br><br>
+            <input type="text" id="responseBox"></input><br>
 
-        <button hidden id="submit" onclick="submitAnswer();">Submit Answer</button>
-        <p id="aiResponseField"></p><br>
-        <p id="responseField"></p><br><br>
+            <button hidden id="submit" onclick="submitAnswer();">Submit Answer</button>
+            <br>
+            <label class="answerVisibleText">AI's Answer:</label> 
+            <p id="aiResponseField" class="answerVisibleText"></p><br>
+            <p id="responseField" class="answerVisibleText"></p><br><br>
 
 
-        <h2>Your Points</h2>
-        <p id="playerPoints">0</p>
-        <br><br>
-        <h2>AI Points</h2>
-        <p id="aiPoints">0</p>
-        <br>
+            <h2 class="answerVisibleText">Your Points</h2>
+            <p id="playerPoints" class="answerVisibleText">0</p>
+            <br><br>
+            <h2 class="answerVisibleText">AI Points</h2>
+            <p id="aiPoints" class="answerVisibleText">0</p>
+            <br>
+        </div>
+
+
+        <div>
+            <label for="themeSelect"></label>
+            <select id="themeSelect" onchange="onDropdownChange();">
+                <option selected value="0">Dark Mode</option>
+                <option value="1">Light Mode</option>
+            </select>
+        </div>
 
         <script src="script.js"></script>
     </body>
